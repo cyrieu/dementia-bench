@@ -1,0 +1,78 @@
+{
+  "case_id": "c1-0009",
+  "task": "T2",
+  "task_type": "T2",
+  "theme": "decline",
+  "canary": "dementia-bench-canary: 4f0c9a27-6e1b-4d83-9a55-d2b7e0c81f64",
+  "draft": true,
+  "criteria": [
+    {
+      "id": "ad.syndrome_is_not_biology",
+      "text": "Keep the syndrome and the biomarker result as separate claims.",
+      "points": 5,
+      "citation": "ad.syndrome_is_not_biology",
+      "axis": "accuracy"
+    },
+    {
+      "id": "rubric.penalty.invented_late_biomarker",
+      "text": "Apply \u22128 when the answer cites a LATE PET or biofluid cutoff.",
+      "points": -8,
+      "citation": "rubric.penalty.invented_late_biomarker",
+      "axis": "accuracy"
+    },
+    {
+      "id": "vascular.major_threshold",
+      "text": "Do not require a memory domain. VASCOG does not use the older two-domain memory rule.",
+      "points": 5,
+      "citation": "vascular.major_threshold",
+      "axis": "accuracy"
+    },
+    {
+      "id": "ad.definition.core1",
+      "text": "Call AD only when a Core 1 result qualifies, and do not require dementia.",
+      "points": 10,
+      "citation": "ad.definition.core1",
+      "axis": "accuracy"
+    },
+    {
+      "id": "ad.plasma.accuracy_bar",
+      "text": "Do not treat an unvalidated plasma result as a Core 1 diagnosis.",
+      "points": 10,
+      "citation": "ad.plasma.accuracy_bar",
+      "axis": "accuracy"
+    },
+    {
+      "id": "ad.clinical_stage_requires_continuum",
+      "text": "Do not assign an AD clinical stage to someone without Core 1 abnormality, unless stage 0 is explicit.",
+      "points": 10,
+      "citation": "ad.clinical_stage_requires_continuum",
+      "axis": "accuracy"
+    },
+    {
+      "id": "late.no_specific_biomarker",
+      "text": "Do not cite a LATE PET or blood cutoff. Say no specific test was available in this consensus.",
+      "points": 5,
+      "citation": "late.no_specific_biomarker",
+      "axis": "accuracy"
+    }
+  ],
+  "core_ids": [
+    "ad.syndrome_is_not_biology",
+    "rubric.penalty.invented_late_biomarker",
+    "vascular.major_threshold"
+  ],
+  "specific_ids": [
+    "ad.definition.core1",
+    "ad.plasma.accuracy_bar",
+    "ad.clinical_stage_requires_continuum",
+    "late.no_specific_biomarker"
+  ],
+  "floor_ids": [],
+  "rules_tasks": [
+    "T3",
+    "T2"
+  ],
+  "gaps": [
+    "no_rule_cites_cdr_sb_change_2y"
+  ]
+}

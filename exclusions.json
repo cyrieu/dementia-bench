@@ -1,0 +1,188 @@
+[
+  {
+    "case_id": "c1-0000",
+    "task_type": "T1",
+    "label": "mixed",
+    "comment": "The mixed mode (31%) and near-equal AD probability are not supported by an unchanged memory history, no focal MRI pattern, and negative CSF A\u03b242/p-tau181; elevated t-tau does not identify two pathologies. The saved model (reward 0.876312) is more sensible in lowering AD and considering a parkinsonian syndrome, but its 55% DLB probability is not established by mild impairment and isolated parkinsonism. The rubric does not directly test whether the probability vector is a fair chart target."
+  },
+  {
+    "case_id": "c1-0002",
+    "task_type": "T3",
+    "label": "LATE",
+    "comment": "The note supports A-negative, but no CSF p-tau181/tau PET or N measurement is shown, so definitive T-negative/N-negative calls exceed the visible evidence. Withheld p-tau181 14.2, tau PET 1.04 and t-tau 133 were checked only for internal contradiction: they agree with the gold, but were unavailable to the chart reader. The saved model (reward 0.766667) is more sensible on N=unknown; its T-negative interpretation of plasma p-tau217 is not the generator's T rule, which uses CSF p-tau181 or tau PET. The rubric omits a check for whether each axis is actually observable."
+  },
+  {
+    "case_id": "c1-0003",
+    "task_type": "T5",
+    "label": "LATE",
+    "comment": "Amyloid PET is an unfair single next test when CDR/CDR-SB are 0, MMSE/MoCA are 29, and CSF A\u03b242 1383 with p-tau181 15.9 is already negative by the bench cutoffs. The saved sleep_study answer (reward 0.300) is more sensible given daytime sleepiness and headache, although these do not establish a sleep disorder or a uniquely indicated test. The rubric does not test the next-test choice."
+  },
+  {
+    "case_id": "c1-0004",
+    "task_type": "T1",
+    "label": "AD",
+    "comment": "AD is a supported mode, but allocating 29% to FTLD-TDP is not a fair target for an 88-year-old with amnestic decline, intact language/executive history and clearly positive AD biomarkers. Behavior change and nonspecific asymmetric atrophy do not establish TDP pathology; the distribution overweights a protein subtype without supporting evidence."
+  },
+  {
+    "case_id": "c1-0007",
+    "task_type": "T5",
+    "label": "FTLD-tau",
+    "comment": "Amyloid PET repeats an already negative CSF amyloid/tau workup (A\u03b242 1680, p-tau181 15.4) without a stated discordance to resolve. With moderate impairment and no MRI shown, structural imaging or syndrome characterization has a clearer unanswered purpose; the first-match rule does not justify a unique PET choice."
+  },
+  {
+    "case_id": "c1-0010",
+    "task_type": "T1",
+    "label": "mixed",
+    "comment": "A 78% mixed probability is unsupported in this 62-year-old with mild test impairment, no described focal syndrome, no focal atrophy and negative amyloid/tau markers. The note does not identify two contributing processes; uncertainty about etiology should not become confidence in mixed pathology."
+  },
+  {
+    "case_id": "c1-0014",
+    "task_type": "T3",
+    "label": "FTLD-TDP",
+    "comment": "Tau PET 1.00 supports T-negative, but no A measurement or t-tau is visible, making definite A-negative and N-negative unfair chart targets. Withheld A\u03b242 1520, amyloid PET 11.5, plasma p-tau217 0.21 and t-tau 130 were checked only for internal contradiction and agree with the gold; none was available to the reader. Severe cognitive scores cannot replace those measurements."
+  },
+  {
+    "case_id": "c1-0015",
+    "task_type": "T5",
+    "label": "AD",
+    "comment": "Amyloid PET has no stated unresolved purpose after positive CSF A\u03b242 597, p-tau181 67.0, plasma p-tau217 0.96 and tau PET 1.61 already demonstrate the bench AD biomarker pattern. An additional confirmatory scan is possible in a specified setting, but the note supplies no reason to score it as the single next test."
+  },
+  {
+    "case_id": "c1-0016",
+    "task_type": "T2",
+    "label": "mixed",
+    "comment": "A definite +2.0-point/decline=true forecast is weakly grounded in this 51-year-old with CDR 0.5, largely unchanged symptom history, negative CSF amyloid and no focal MRI pattern. The note establishes mild test impairment but no clear progressive syndrome or observed rate; this trajectory may occur, but is not a fair uniquely scored expectation."
+  },
+  {
+    "case_id": "c1-0018",
+    "task_type": "T3",
+    "label": "FTLD-tau",
+    "comment": "Amyloid PET 9.2 supports A-negative, but no T measurement or CSF t-tau is visible, so the full A-/T-/N- key cannot be recovered from the note. Withheld p-tau181 15.2, tau PET 1.04 and t-tau 159 were checked only for internal contradiction and agree with the gold. Visible asymmetric atrophy does not justify declaring clinical neurodegeneration absent; the bench specifically defines N by t-tau."
+  },
+  {
+    "case_id": "c1-0019",
+    "task_type": "T5",
+    "label": "AD",
+    "comment": "Amyloid PET 95.0 and CSF p-tau181 44.3 already establish A+/T+ by the bench rules, while the note gives no regional staging or treatment question that makes tau PET the single next test. Tau PET could add spatial information, so this is an uncertainty flag about the mandatory next-test choice, not a claim that it can never be useful."
+  },
+  {
+    "case_id": "c1-0022",
+    "task_type": "T3",
+    "label": "mixed",
+    "comment": "CSF A\u03b242 650 supports A-positive, but the vignette shows no T or N measurement, so T-positive/N-positive cannot fairly be required. Withheld p-tau181 50.9, tau PET 1.54 and t-tau 461 were checked only for internal contradiction and agree with the key; they are not evidence available in the note."
+  },
+  {
+    "case_id": "c1-0023",
+    "task_type": "T5",
+    "label": "AD",
+    "comment": "At CDR 3/CDR-SB 17, positive CSF A\u03b242 673, p-tau181 45.5, plasma p-tau217 0.80 and tau PET 1.69 already answer the biomarker question, without a stated reason for amyloid PET. The first-match PET rule ignores the existing panel and advanced stage, making this an unfair single next-test target."
+  },
+  {
+    "case_id": "c1-0024",
+    "task_type": "T1",
+    "label": "vascular",
+    "comment": "A 99.9% vascular probability is unjustified by stepwise/executive symptoms when the MRI describes only posterior atrophy and no causative cerebrovascular lesions. Vascular disease remains a hypothesis, but the visible chart cannot support near-certainty or effectively exclude other non-AD causes."
+  },
+  {
+    "case_id": "c1-0028",
+    "task_type": "T1",
+    "label": "FTLD-tau",
+    "comment": "An 81% FTLD-tau probability is unsupported by nonspecific behavioral/executive complaints with MMSE 30/CDR 0 and no subtype-defining evidence. Fluctuations and formed hallucinations require consideration, and negative amyloid does not establish a tau proteinopathy; the chart also lacks a documented progressive bvFTD syndrome."
+  },
+  {
+    "case_id": "c1-0029",
+    "task_type": "T2",
+    "label": "FTLD-tau",
+    "comment": "A definite +2.5-point/decline=true forecast from CDR 0/CDR-SB 0 and MMSE 28 is not supported by a documented progressive rate in this stepwise, language/executive presentation. Symptoms and parkinsonism justify investigation, but their inconsistency with the normal functional stage leaves the two-year trajectory uncertain."
+  },
+  {
+    "case_id": "c1-0030",
+    "task_type": "T3",
+    "label": "vascular",
+    "comment": "Visible p-tau181 15.8, tau PET 1.05 and t-tau 154 support T-negative/N-negative, but no A measurement is shown to justify A-negative. Withheld A\u03b242 1519, amyloid PET 8.6 and plasma p-tau217 0.22 were checked only for internal contradiction and agree with gold. Posterior atrophy does not substitute for the missing A measurement."
+  },
+  {
+    "case_id": "c1-0031",
+    "task_type": "T5",
+    "label": "vascular",
+    "comment": "The gold requests mri_brain even though an MRI reporting frontal atrophy is already in the note, with no interval event, technical limitation or repeat-imaging question. A stepwise history could justify reviewing vascular sequences, but the vignette does not establish that another MRI is the single next test."
+  },
+  {
+    "case_id": "c1-0032",
+    "task_type": "T3",
+    "label": "mixed",
+    "comment": "Amyloid PET 65.5 and CSF A\u03b242 754 support A-positive, but plasma p-tau217 is an A proxy in this generator and the note lacks its T measurements and t-tau-based N measurement. Withheld p-tau181 55.7, tau PET 1.79 and t-tau 393 were checked only for internal contradiction and agree with the positive key. Posterior atrophy supports clinical concern but does not supply the missing bench measurements."
+  },
+  {
+    "case_id": "c1-0034",
+    "task_type": "T3",
+    "label": "FTLD-tau",
+    "comment": "CSF A\u03b242 1515 and amyloid PET 3.9 support A-negative, but the displayed plasma p-tau217 does not supply the generator's T call and no N measurement is shown. Withheld p-tau181 16.0, tau PET 1.09 and t-tau 136 were checked only for internal contradiction and agree with T-/N-; a chart reader could not use them."
+  },
+  {
+    "case_id": "c1-0035",
+    "task_type": "T5",
+    "label": "LATE",
+    "comment": "Amyloid PET is not a fair mandatory next test after negative CSF A\u03b242 1545 and p-tau181 14.2 in a minimally impaired, stepwise presentation. Hippocampal atrophy does not overturn those measurements or establish a need to duplicate amyloid testing; the symptom pattern needs clarification."
+  },
+  {
+    "case_id": "c1-0039",
+    "task_type": "T5",
+    "label": "mixed",
+    "comment": "DAT imaging is not established as the single next test by active sleep alone when hallucinations and fluctuations are denied and no motor examination is recorded. The note could motivate a Lewy-body differential, but clarification of the sleep behavior or formal syndrome assessment is at least as defensible; the hidden DLB component cannot select the test for the reader."
+  },
+  {
+    "case_id": "c1-0043",
+    "task_type": "T4",
+    "label": "mixed",
+    "comment": "The vascular/LATE pair is not supported by a 57-year-old's gradual memory/language presentation with posterior atrophy and no described vascular lesions. The saved model (reward 0.300) more sensibly questions vascular disease and LATE, but its asserted FTLD-tau plus FTLD-TDP pair is not a more sensible answer: language symptoms and negative AD markers cannot establish either protein, much less both together. The rubric lacks a direct check that the named pair is supported; that gap alone is not a criterion flag."
+  },
+  {
+    "case_id": "c1-0044",
+    "task_type": "T1",
+    "label": "AD",
+    "comment": "AD biomarkers support AD, but the vector gives vascular disease 30% without vascular lesions or a stepwise course and only 4.7% to mixed despite dementia, fluctuations and parkinsonism. The visible competing Lewy-body features make the distribution unfair even though an AD component is well supported."
+  },
+  {
+    "case_id": "c1-0048",
+    "task_type": "T1",
+    "label": "LATE",
+    "comment": "The A-/T- amnestic hippocampal pattern permits LATE as a hypothesis, but a LATE mode at age 67 and 33% AD despite two negative amyloid tests are not a well-supported scoring distribution. Age does not exclude LATE; the concern is overconfident attribution and poor weighting of the visible negative biomarkers, not an invented age cutoff."
+  },
+  {
+    "case_id": "c1-0050",
+    "task_type": "T3",
+    "label": "DLB",
+    "comment": "CSF A\u03b242 1495 and tau PET 1.09 support A-negative/T-negative, but no CSF t-tau is visible to support the required N-negative call. Withheld t-tau 134 was checked only for internal contradiction and matches the gold. White-matter disease neither supplies that number nor warrants a general claim that neurodegeneration is absent."
+  },
+  {
+    "case_id": "c1-0051",
+    "task_type": "T5",
+    "label": "FTLD-TDP",
+    "comment": "Routine neuropsychological_testing is not a fair single next test at CDR-SB 18, MMSE 4 and MoCA 3 without a specified adapted assessment question. Severe floor effects limit a conventional battery's ability to resolve etiology; the first-match FTLD fallback ignores the visible stage."
+  },
+  {
+    "case_id": "c1-0054",
+    "task_type": "T3",
+    "label": "LATE",
+    "comment": "A\u03b242 1361 and tau PET 1.09 support A-negative/T-negative, but no t-tau is shown to establish the gold N-negative value, and the note describes hippocampal atrophy. Withheld t-tau 161 was checked only for internal contradiction and agrees with the generator's N rule. It was unavailable to the reader and cannot justify a visible-chart claim of absent neurodegeneration."
+  },
+  {
+    "case_id": "c1-0055",
+    "task_type": "T1",
+    "label": "mixed",
+    "comment": "A 71% mixed mode is not supported by an amnestic presentation at age 60 with positive amyloid/tau PET and no visible evidence of a second disease process. The note supports an AD component; it does not justify making unspecified copathology more likely than AD alone."
+  },
+  {
+    "case_id": "c1-0058",
+    "task_type": "T4",
+    "label": "mixed",
+    "comment": "Age 91 and a memory complaint make LATE conceivable, but MMSE 30/CDR-SB 0, intact executive history and no vascular imaging or event do not support the required vascular/LATE pair. Elevated t-tau is nonspecific and cannot establish those two pathologies; the visible evidence leaves the pair unresolved."
+  },
+  {
+    "case_id": "c1-0059",
+    "task_type": "T5",
+    "label": "LATE",
+    "comment": "Plasma p-tau217 adds another AD-related marker after amyloid PET -1.1 and p-tau181 12.7 are negative, with MMSE 30/MoCA 27/CDR-SB 0 and no stated biomarker discordance. Hallucinations, stepwise symptoms and behavior change need clarification, but the first-match missing-plasma rule does not establish a fair single next test."
+  }
+]

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dementia Bench</title>
+  <meta name="description" content="A 29-task Harbor benchmark of synthetic memory-clinic notes. Not medical advice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,560&family=IBM+Plex+Mono&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="kicker"><span>Research release</span><span>8 November 2026</span></div>
+      <h1>Dementia Bench</h1>
+      <p class="deck">Twenty-nine synthetic memory-clinic items for Harbor. Each one asks a model for a single structured answer, then scores that answer against a generator key a review model was willing to defend.</p>
+      <ul class="links">
+        <li><a href="https://github.com/cyrieu/dementia-bench">Repository</a></li>
+        <li><a href="https://github.com/cyrieu/dementia-bench/tree/main/tasks">Tasks</a></li>
+        <li><a href="#exclusions">Excluded keys</a></li>
+      </ul>
+      <nav class="contents" aria-label="Contents">
+        <div class="kicker">Contents</div>
+        <ol>
+          <li><a href="#release">The release</a></li>
+          <li><a href="#tasks">The tasks</a></li>
+          <li><a href="#example">One example</a></li>
+          <li><a href="#harness">The harness</a></li>
+          <li><a href="#scoring">Scoring</a></li>
+          <li><a href="#exclusions">What was left out</a></li>
+          <li><a href="#trials">What has been measured</a></li>
+          <li><a href="#limits">Limits</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <section id="release">
+      <h2><span>01</span>The release</h2>
+      <p>The starting pool was 60 synthetic cases from one generator seed. GPT-6-Astra read each vignette and the gold for that case's assigned task, and marked the key fair or unfair. This package keeps the 29 approvals. The 31 flags are listed below and are not runnable tasks.</p>
+      <p class="note">Astra is one model, not a physician panel. An approval means the assigned key is a defensible scoring target for the note. It does not confirm a diagnosis, a probability, or a treatment.</p>
+      <div class="measure">
+        <div><strong>29</strong><span>accepted tasks</span></div>
+        <div><strong>31</strong><span>keys excluded</span></div>
+        <div><strong>0</strong><span>co-pathology items kept</span></div>
+      </div>
+    </section>
+
+    <section id="tasks">
+      <h2><span>02</span>The tasks</h2>
+      <p>Each case has one question. The hidden label is generator metadata. The model is graded on the gold block for the assigned task, not on naming that label unless the task is the differential.</p>
+      <table>
+        <thead><tr><th>Task</th><th>Question</th><th class="num">Kept</th></tr></thead>
+        <tbody>
+          <tr><td>T1</td><td>Differential</td><td class='num '>6</td></tr>
+<tr><td>T2</td><td>Two-year change</td><td class='num '>15</td></tr>
+<tr><td>T3</td><td>A/T/N call</td><td class='num '>6</td></tr>
+<tr><td>T4</td><td>Co-pathology</td><td class='num zero'>0</td></tr>
+<tr><td>T5</td><td>Next test</td><td class='num '>2</td></tr>
+        </tbody>
+      </table>
+      <p>Both mixed co-pathology keys were rejected, so this release has no T4 item. Ten of the twelve next-test keys were rejected. The kept set is mostly two-year CDR-SB forecasts.</p>
+      <h3>Hidden label on the kept cases</h3>
+      <table>
+        <thead><tr><th>Label</th><th class="num">Cases</th></tr></thead>
+        <tbody>
+          <tr><td>AD</td><td class='num'>11</td></tr>
+<tr><td>DLB</td><td class='num'>6</td></tr>
+<tr><td>FTLD-tau</td><td class='num'>2</td></tr>
+<tr><td>FTLD-TDP</td><td class='num'>5</td></tr>
+<tr><td>vascular</td><td class='num'>3</td></tr>
+<tr><td>LATE</td><td class='num'>0</td></tr>
+<tr><td>mixed</td><td class='num'>2</td></tr>
+        </tbody>
+      </table>
+      <p>The label counts are the generator's draw, not the prevalence of these diseases.</p>
+    </section>
+
+    <section id="example">
+      <h2><span>03</span>One example</h2>
+      <p><span class="mono">c1-0008</span> is a T1 differential. The note is a 72-year-old woman with formed visual hallucinations, fluctuating attention, dream-enactment movements, slowed movement and limb rigidity, a stepwise course, CDR 3, MMSE 9, and MoCA 7. CSF amyloid and tau markers in the note are on the negative side of this bench's cutoffs.</p>
+      <div class="example">
+        <h3>Gold probabilities</h3>
+        <p>The key is a distribution, not a single winner. Displayed from <span class="mono">cases/c1-0008/answer.json</span>.</p>
+        <div class="probs">
+          <span>DLB</span><b>83.9%</b>
+<span>vascular</span><b>15.7%</b>
+<span>FTLD-tau</span><b>0.3%</b>
+<span>mixed</span><b>0.0%</b>
+<span>AD</span><b>0.0%</b>
+<span>LATE</span><b>0.0%</b>
+<span>FTLD-TDP</span><b>0.0%</b>
+        </div>
+      </div>
+      <p>The review kept it because the chart supports a DLB-weighted distribution and a smaller vascular alternative, and because the low Alzheimer probability agrees with the negative amyloid and tau markers. The exact percentages are the generator's, not a calibrated forecast. Astra's comment: Dementia with fluctuations, formed visual hallucinations and parkinsonism supports the DLB-dominant vector (84%); a stepwise course supports retaining a vascular alternative. The negative visible amyloid/tau markers fit low AD probability; no exact probability calibration is implied.</p>
+    </section>
+
+    <section id="harness">
+      <h2><span>04</span>The harness</h2>
+      <p>Each directory in <span class="mono">tasks/</span> is one Harbor task. The agent sees <span class="mono">instruction.md</span> and the vignette. It does not see the answer file or the rubric. Those are uploaded when the verifier runs.</p>
+      <div class="harness">
+        <ol>
+          <li>The agent writes one JSON file from the vignette. That phase has no network.</li>
+          <li>The verifier scores the JSON against <span class="mono">tests/answer.json</span>.</li>
+          <li>A separate rubric judge reads the response against <span class="mono">tests/rubric.json</span>. The judge in the task file is <span class="mono">grok-4.20-0309-non-reasoning</span>, not the model under test.</li>
+          <li>Harbor reads <span class="mono">reward.json</span>.</li>
+        </ol>
+      </div>
+      <p>The five task questions are a differential over seven labels, a two-year CDR sum-of-boxes change, an A/T/N call, a co-pathology pair, and one next test from a closed list. Only the first, second, third, and fifth appear in this release.</p>
+    </section>
+
+    <section id="scoring">
+      <h2><span>05</span>Scoring</h2>
+      <div class="formula">
+        <h3>Reward</h3>
+        <p class="mono">reward = 0.7 × label score + 0.3 × rubric score</p>
+        <p>The label term depends on the task: a probability score for T1, a CDR-SB trajectory for T2, agreement on A, T, and N for T3, and an exact next-test token for T5. The rubric term is a point score from draft items. Those points are not published clinical weights.</p>
+      </div>
+      <p>One kept case, <span class="mono">c1-0001</span>, still has a flagged rubric line. The case-level forecast was accepted. The line <span class="mono">late.no_specific_biomarker</span> was flagged because a saved judge mark said the model had met a sentence the response did not contain. The rubric text in the task is unchanged.</p>
+    </section>
+
+    <section id="exclusions">
+      <h2><span>06</span>What was left out</h2>
+      <p>These 31 keys are not in <span class="mono">tasks/</span>. The vignettes are omitted on purpose. The reason is the review comment.</p>
+      <table>
+        <thead><tr><th>Excluded by task</th><th class="num">Count</th></tr></thead>
+        <tbody>
+          <tr><td>T1</td><td>Differential</td><td class='num '>8</td></tr>
+<tr><td>T2</td><td>Two-year change</td><td class='num '>2</td></tr>
+<tr><td>T3</td><td>A/T/N call</td><td class='num '>9</td></tr>
+<tr><td>T4</td><td>Co-pathology</td><td class='num '>2</td></tr>
+<tr><td>T5</td><td>Next test</td><td class='num '>10</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <thead><tr><th>Case</th><th>Task</th><th>Label</th><th>Why it was excluded</th></tr></thead>
+        <tbody>
+          <tr><td class='mono'>c1-0000</td><td>T1</td><td>mixed</td><td>The mixed mode (31%) and near-equal AD probability are not supported by an unchanged memory history, no focal MRI pattern, and negative CSF Aβ42/p-tau181; elevated t-tau does not identify two pathologies. The saved model (reward 0.876312) is more sensible in lowering AD and considering a parkinsonian syndrome, but its 55% DLB probability is not established by mild impairment and isolated parkinsonism. The rubric does not directly test whether the probability vector is a fair chart target.</td></tr>
+<tr><td class='mono'>c1-0002</td><td>T3</td><td>LATE</td><td>The note supports A-negative, but no CSF p-tau181/tau PET or N measurement is shown, so definitive T-negative/N-negative calls exceed the visible evidence. Withheld p-tau181 14.2, tau PET 1.04 and t-tau 133 were checked only for internal contradiction: they agree with the gold, but were unavailable to the chart reader. The saved model (reward 0.766667) is more sensible on N=unknown; its T-negative interpretation of plasma p-tau217 is not the generator&#x27;s T rule, which uses CSF p-tau181 or tau PET. The rubric omits a check for whether each axis is actually observable.</td></tr>
+<tr><td class='mono'>c1-0003</td><td>T5</td><td>LATE</td><td>Amyloid PET is an unfair single next test when CDR/CDR-SB are 0, MMSE/MoCA are 29, and CSF Aβ42 1383 with p-tau181 15.9 is already negative by the bench cutoffs. The saved sleep_study answer (reward 0.300) is more sensible given daytime sleepiness and headache, although these do not establish a sleep disorder or a uniquely indicated test. The rubric does not test the next-test choice.</td></tr>
+<tr><td class='mono'>c1-0004</td><td>T1</td><td>AD</td><td>AD is a supported mode, but allocating 29% to FTLD-TDP is not a fair target for an 88-year-old with amnestic decline, intact language/executive history and clearly positive AD biomarkers. Behavior change and nonspecific asymmetric atrophy do not establish TDP pathology; the distribution overweights a protein subtype without supporting evidence.</td></tr>
+<tr><td class='mono'>c1-0007</td><td>T5</td><td>FTLD-tau</td><td>Amyloid PET repeats an already negative CSF amyloid/tau workup (Aβ42 1680, p-tau181 15.4) without a stated discordance to resolve. With moderate impairment and no MRI shown, structural imaging or syndrome characterization has a clearer unanswered purpose; the first-match rule does not justify a unique PET choice.</td></tr>
+<tr><td class='mono'>c1-0010</td><td>T1</td><td>mixed</td><td>A 78% mixed probability is unsupported in this 62-year-old with mild test impairment, no described focal syndrome, no focal atrophy and negative amyloid/tau markers. The note does not identify two contributing processes; uncertainty about etiology should not become confidence in mixed pathology.</td></tr>
+<tr><td class='mono'>c1-0014</td><td>T3</td><td>FTLD-TDP</td><td>Tau PET 1.00 supports T-negative, but no A measurement or t-tau is visible, making definite A-negative and N-negative unfair chart targets. Withheld Aβ42 1520, amyloid PET 11.5, plasma p-tau217 0.21 and t-tau 130 were checked only for internal contradiction and agree with the gold; none was available to the reader. Severe cognitive scores cannot replace those measurements.</td></tr>
+<tr><td class='mono'>c1-0015</td><td>T5</td><td>AD</td><td>Amyloid PET has no stated unresolved purpose after positive CSF Aβ42 597, p-tau181 67.0, plasma p-tau217 0.96 and tau PET 1.61 already demonstrate the bench AD biomarker pattern. An additional confirmatory scan is possible in a specified setting, but the note supplies no reason to score it as the single next test.</td></tr>
+<tr><td class='mono'>c1-0016</td><td>T2</td><td>mixed</td><td>A definite +2.0-point/decline=true forecast is weakly grounded in this 51-year-old with CDR 0.5, largely unchanged symptom history, negative CSF amyloid and no focal MRI pattern. The note establishes mild test impairment but no clear progressive syndrome or observed rate; this trajectory may occur, but is not a fair uniquely scored expectation.</td></tr>
+<tr><td class='mono'>c1-0018</td><td>T3</td><td>FTLD-tau</td><td>Amyloid PET 9.2 supports A-negative, but no T measurement or CSF t-tau is visible, so the full A-/T-/N- key cannot be recovered from the note. Withheld p-tau181 15.2, tau PET 1.04 and t-tau 159 were checked only for internal contradiction and agree with the gold. Visible asymmetric atrophy does not justify declaring clinical neurodegeneration absent; the bench specifically defines N by t-tau.</td></tr>
+<tr><td class='mono'>c1-0019</td><td>T5</td><td>AD</td><td>Amyloid PET 95.0 and CSF p-tau181 44.3 already establish A+/T+ by the bench rules, while the note gives no regional staging or treatment question that makes tau PET the single next test. Tau PET could add spatial information, so this is an uncertainty flag about the mandatory next-test choice, not a claim that it can never be useful.</td></tr>
+<tr><td class='mono'>c1-0022</td><td>T3</td><td>mixed</td><td>CSF Aβ42 650 supports A-positive, but the vignette shows no T or N measurement, so T-positive/N-positive cannot fairly be required. Withheld p-tau181 50.9, tau PET 1.54 and t-tau 461 were checked only for internal contradiction and agree with the key; they are not evidence available in the note.</td></tr>
+<tr><td class='mono'>c1-0023</td><td>T5</td><td>AD</td><td>At CDR 3/CDR-SB 17, positive CSF Aβ42 673, p-tau181 45.5, plasma p-tau217 0.80 and tau PET 1.69 already answer the biomarker question, without a stated reason for amyloid PET. The first-match PET rule ignores the existing panel and advanced stage, making this an unfair single next-test target.</td></tr>
+<tr><td class='mono'>c1-0024</td><td>T1</td><td>vascular</td><td>A 99.9% vascular probability is unjustified by stepwise/executive symptoms when the MRI describes only posterior atrophy and no causative cerebrovascular lesions. Vascular disease remains a hypothesis, but the visible chart cannot support near-certainty or effectively exclude other non-AD causes.</td></tr>
+<tr><td class='mono'>c1-0028</td><td>T1</td><td>FTLD-tau</td><td>An 81% FTLD-tau probability is unsupported by nonspecific behavioral/executive complaints with MMSE 30/CDR 0 and no subtype-defining evidence. Fluctuations and formed hallucinations require consideration, and negative amyloid does not establish a tau proteinopathy; the chart also lacks a documented progressive bvFTD syndrome.</td></tr>
+<tr><td class='mono'>c1-0029</td><td>T2</td><td>FTLD-tau</td><td>A definite +2.5-point/decline=true forecast from CDR 0/CDR-SB 0 and MMSE 28 is not supported by a documented progressive rate in this stepwise, language/executive presentation. Symptoms and parkinsonism justify investigation, but their inconsistency with the normal functional stage leaves the two-year trajectory uncertain.</td></tr>
+<tr><td class='mono'>c1-0030</td><td>T3</td><td>vascular</td><td>Visible p-tau181 15.8, tau PET 1.05 and t-tau 154 support T-negative/N-negative, but no A measurement is shown to justify A-negative. Withheld Aβ42 1519, amyloid PET 8.6 and plasma p-tau217 0.22 were checked only for internal contradiction and agree with gold. Posterior atrophy does not substitute for the missing A measurement.</td></tr>
+<tr><td class='mono'>c1-0031</td><td>T5</td><td>vascular</td><td>The gold requests mri_brain even though an MRI reporting frontal atrophy is already in the note, with no interval event, technical limitation or repeat-imaging question. A stepwise history could justify reviewing vascular sequences, but the vignette does not establish that another MRI is the single next test.</td></tr>
+<tr><td class='mono'>c1-0032</td><td>T3</td><td>mixed</td><td>Amyloid PET 65.5 and CSF Aβ42 754 support A-positive, but plasma p-tau217 is an A proxy in this generator and the note lacks its T measurements and t-tau-based N measurement. Withheld p-tau181 55.7, tau PET 1.79 and t-tau 393 were checked only for internal contradiction and agree with the positive key. Posterior atrophy supports clinical concern but does not supply the missing bench measurements.</td></tr>
+<tr><td class='mono'>c1-0034</td><td>T3</td><td>FTLD-tau</td><td>CSF Aβ42 1515 and amyloid PET 3.9 support A-negative, but the displayed plasma p-tau217 does not supply the generator&#x27;s T call and no N measurement is shown. Withheld p-tau181 16.0, tau PET 1.09 and t-tau 136 were checked only for internal contradiction and agree with T-/N-; a chart reader could not use them.</td></tr>
+<tr><td class='mono'>c1-0035</td><td>T5</td><td>LATE</td><td>Amyloid PET is not a fair mandatory next test after negative CSF Aβ42 1545 and p-tau181 14.2 in a minimally impaired, stepwise presentation. Hippocampal atrophy does not overturn those measurements or establish a need to duplicate amyloid testing; the symptom pattern needs clarification.</td></tr>
+<tr><td class='mono'>c1-0039</td><td>T5</td><td>mixed</td><td>DAT imaging is not established as the single next test by active sleep alone when hallucinations and fluctuations are denied and no motor examination is recorded. The note could motivate a Lewy-body differential, but clarification of the sleep behavior or formal syndrome assessment is at least as defensible; the hidden DLB component cannot select the test for the reader.</td></tr>
+<tr><td class='mono'>c1-0043</td><td>T4</td><td>mixed</td><td>The vascular/LATE pair is not supported by a 57-year-old&#x27;s gradual memory/language presentation with posterior atrophy and no described vascular lesions. The saved model (reward 0.300) more sensibly questions vascular disease and LATE, but its asserted FTLD-tau plus FTLD-TDP pair is not a more sensible answer: language symptoms and negative AD markers cannot establish either protein, much less both together. The rubric lacks a direct check that the named pair is supported; that gap alone is not a criterion flag.</td></tr>
+<tr><td class='mono'>c1-0044</td><td>T1</td><td>AD</td><td>AD biomarkers support AD, but the vector gives vascular disease 30% without vascular lesions or a stepwise course and only 4.7% to mixed despite dementia, fluctuations and parkinsonism. The visible competing Lewy-body features make the distribution unfair even though an AD component is well supported.</td></tr>
+<tr><td class='mono'>c1-0048</td><td>T1</td><td>LATE</td><td>The A-/T- amnestic hippocampal pattern permits LATE as a hypothesis, but a LATE mode at age 67 and 33% AD despite two negative amyloid tests are not a well-supported scoring distribution. Age does not exclude LATE; the concern is overconfident attribution and poor weighting of the visible negative biomarkers, not an invented age cutoff.</td></tr>
+<tr><td class='mono'>c1-0050</td><td>T3</td><td>DLB</td><td>CSF Aβ42 1495 and tau PET 1.09 support A-negative/T-negative, but no CSF t-tau is visible to support the required N-negative call. Withheld t-tau 134 was checked only for internal contradiction and matches the gold. White-matter disease neither supplies that number nor warrants a general claim that neurodegeneration is absent.</td></tr>
+<tr><td class='mono'>c1-0051</td><td>T5</td><td>FTLD-TDP</td><td>Routine neuropsychological_testing is not a fair single next test at CDR-SB 18, MMSE 4 and MoCA 3 without a specified adapted assessment question. Severe floor effects limit a conventional battery&#x27;s ability to resolve etiology; the first-match FTLD fallback ignores the visible stage.</td></tr>
+<tr><td class='mono'>c1-0054</td><td>T3</td><td>LATE</td><td>Aβ42 1361 and tau PET 1.09 support A-negative/T-negative, but no t-tau is shown to establish the gold N-negative value, and the note describes hippocampal atrophy. Withheld t-tau 161 was checked only for internal contradiction and agrees with the generator&#x27;s N rule. It was unavailable to the reader and cannot justify a visible-chart claim of absent neurodegeneration.</td></tr>
+<tr><td class='mono'>c1-0055</td><td>T1</td><td>mixed</td><td>A 71% mixed mode is not supported by an amnestic presentation at age 60 with positive amyloid/tau PET and no visible evidence of a second disease process. The note supports an AD component; it does not justify making unspecified copathology more likely than AD alone.</td></tr>
+<tr><td class='mono'>c1-0058</td><td>T4</td><td>mixed</td><td>Age 91 and a memory complaint make LATE conceivable, but MMSE 30/CDR-SB 0, intact executive history and no vascular imaging or event do not support the required vascular/LATE pair. Elevated t-tau is nonspecific and cannot establish those two pathologies; the visible evidence leaves the pair unresolved.</td></tr>
+<tr><td class='mono'>c1-0059</td><td>T5</td><td>LATE</td><td>Plasma p-tau217 adds another AD-related marker after amyloid PET -1.1 and p-tau181 12.7 are negative, with MMSE 30/MoCA 27/CDR-SB 0 and no stated biomarker discordance. Hallucinations, stepwise symptoms and behavior change need clarification, but the first-match missing-plasma rule does not establish a fair single next test.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="trials">
+      <h2><span>07</span>What has been measured</h2>
+      <p>One kept case has a saved trial. On 29 October 2026, <span class="mono">c1-0001</span> was run once with Harbor, terminus-2, and <span class="mono">xai/grok-4.7</span>. The reward was <strong>0.650</strong>, from a label score of 0.500 and a rubric score of 1.000. The gold two-year CDR-SB change is +1.5. The model said +4.0. Both were treated as plausible, so the key stayed in the release. One trial is not a leaderboard.</p>
+      <p>Four other trials from that day, with rewards 0.876, 0.767, 0.300, and 0.300, sit on keys this release excludes. They are not averaged into a Dementia Bench score.</p>
+    </section>
+
+    <section id="limits">
+      <h2><span>08</span>Limits</h2>
+      <p>The notes are synthetic. The priors are an invented fixture, not ADNI, NACC, OASIS, or AIBL. The gold is the generator's scoring key. A model can disagree with it and still be the more sensible read of the chart. That is why the other 31 keys are gone.</p>
+      <p>There is no physician agreement on the rubric and no private held-out seed in this repository. Publishing a private answer would publish the seed that rebuilds it, so the held-out split is not here.</p>
+      <p>Do not use a score on this bench as a claim about diagnosis, prognosis, or care.</p>
+    </section>
+
+    <footer>
+      <p>Dementia Bench, 8 November 2026. Synthetic cases. Canary strings are in the task files. Not medical advice.</p>
+    </footer>
+  </div>
+</body>
+</html>

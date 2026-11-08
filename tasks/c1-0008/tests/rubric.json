@@ -1,0 +1,83 @@
+{
+  "case_id": "c1-0008",
+  "task": "T1",
+  "task_type": "T1",
+  "theme": "differential-diagnosis",
+  "canary": "dementia-bench-canary: 4f0c9a27-6e1b-4d83-9a55-d2b7e0c81f64",
+  "draft": true,
+  "criteria": [
+    {
+      "id": "ad.syndrome_is_not_biology",
+      "text": "Keep the syndrome and the biomarker result as separate claims.",
+      "points": 5,
+      "citation": "ad.syndrome_is_not_biology",
+      "axis": "accuracy"
+    },
+    {
+      "id": "rubric.penalty.invented_late_biomarker",
+      "text": "Apply \u22128 when the answer cites a LATE PET or biofluid cutoff.",
+      "points": -8,
+      "citation": "rubric.penalty.invented_late_biomarker",
+      "axis": "accuracy"
+    },
+    {
+      "id": "rubric.penalty.clinical_tau_versus_tdp",
+      "text": "Apply \u22125 when the answer splits tau from TDP using the history or the syndrome.",
+      "points": -5,
+      "citation": "rubric.penalty.clinical_tau_versus_tdp",
+      "axis": "accuracy"
+    },
+    {
+      "id": "rubric.credit.names_copathology",
+      "text": "Apply +5 when the answer keeps more than one pathology in play for a good reason.",
+      "points": 5,
+      "citation": "rubric.credit.names_copathology",
+      "axis": "context awareness"
+    },
+    {
+      "id": "dlb.at_least_possible",
+      "text": "Do not assign DLB when there is neither a core feature nor an indicative biomarker.",
+      "points": 10,
+      "citation": "dlb.at_least_possible",
+      "axis": "accuracy"
+    },
+    {
+      "id": "dlb.essential.dementia",
+      "text": "Do not diagnose DLB without dementia.",
+      "points": 10,
+      "citation": "dlb.essential.dementia",
+      "axis": "accuracy"
+    },
+    {
+      "id": "dlb.versus_pdd",
+      "text": "Do not label longstanding Parkinson disease with later dementia as DLB when the distinction matters.",
+      "points": 10,
+      "citation": "dlb.versus_pdd",
+      "axis": "accuracy"
+    },
+    {
+      "id": "late.no_specific_biomarker",
+      "text": "Do not cite a LATE PET or blood cutoff. Say no specific test was available in this consensus.",
+      "points": 5,
+      "citation": "late.no_specific_biomarker",
+      "axis": "accuracy"
+    }
+  ],
+  "core_ids": [
+    "ad.syndrome_is_not_biology",
+    "rubric.penalty.invented_late_biomarker",
+    "rubric.penalty.clinical_tau_versus_tdp",
+    "rubric.credit.names_copathology"
+  ],
+  "specific_ids": [
+    "dlb.at_least_possible",
+    "dlb.essential.dementia",
+    "dlb.versus_pdd",
+    "late.no_specific_biomarker"
+  ],
+  "floor_ids": [],
+  "rules_tasks": [
+    "T1"
+  ],
+  "gaps": []
+}

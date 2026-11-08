@@ -1,0 +1,249 @@
+{
+  "release": "2026-11-08",
+  "reviewer": "astra",
+  "model": "gpt-6-astra",
+  "rule": "A case is in this release only if the Astra review status is approved.",
+  "source_cases": "seed 1 public generation, 60 cases",
+  "accepted": 29,
+  "excluded": 31,
+  "note": "One model review of synthetic scoring keys. Not a physician panel, not a confirmed clinical label, and not medical advice.",
+  "cases": [
+    {
+      "case_id": "c1-0001",
+      "task_type": "T2",
+      "label": "DLB",
+      "comment": "With CDR 1, CDR-SB 4.5, hallucinations, parkinsonism and executive impairment, a 1.5-point two-year increase with decline=true is a plausible modest trajectory. The saved model predicts +4.0 with decline=true (reward 0.650); that is also plausible, but not demonstrably more sensible than the gold from this single note, and its asserted annual rate is unsupported here. Approval is of plausibility, not of a uniquely predictable number; the rubric does not evaluate the forecast magnitude.",
+      "flagged_criteria": [
+        {
+          "id": "late.no_specific_biomarker",
+          "comment": "The saved judge marked this met, but the response does not say that no specific LATE test was available in the cited consensus, as the affirmative second sentence requires; merely avoiding an invented cutoff does not satisfy the whole item."
+        }
+      ],
+      "task_path": "tasks/c1-0001"
+    },
+    {
+      "case_id": "c1-0005",
+      "task_type": "T2",
+      "label": "DLB",
+      "comment": "CDR 1/CDR-SB 7.5 with gradual memory decline, parkinsonism and active sleep makes a 4.5-point two-year increase plausible, although relatively brisk. The vignette does not establish an individual rate; this approves the trajectory as a reasonable possibility and decline=true at the bench threshold, not the hidden DLB label.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0005"
+    },
+    {
+      "case_id": "c1-0006",
+      "task_type": "T3",
+      "label": "AD",
+      "comment": "Visible CSF A\u03b242 732 is below 1100, p-tau181 40.2 exceeds 24, tau PET 1.61 exceeds 1.23, and t-tau 400 exceeds 235, supporting A+/T+/N+ under the bench rules.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0006"
+    },
+    {
+      "case_id": "c1-0008",
+      "task_type": "T1",
+      "label": "DLB",
+      "comment": "Dementia with fluctuations, formed visual hallucinations and parkinsonism supports the DLB-dominant vector (84%); a stepwise course supports retaining a vascular alternative. The negative visible amyloid/tau markers fit low AD probability; no exact probability calibration is implied.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0008"
+    },
+    {
+      "case_id": "c1-0009",
+      "task_type": "T2",
+      "label": "AD",
+      "comment": "Gradual amnestic impairment at CDR 1/CDR-SB 4.5 with positive amyloid and tau markers makes +1.5 points over two years and decline=true a plausible modest trajectory. White-matter disease adds uncertainty to the rate but does not make this proposed increase implausible.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0009"
+    },
+    {
+      "case_id": "c1-0011",
+      "task_type": "T2",
+      "label": "mixed",
+      "comment": "CDR-SB 17.5 leaves only 0.5 points before the scale maximum, so a zero recorded increase and decline=false are fair ceiling-limited targets. Here decline means an increase of at least 1 point in the generator, not absence of clinical deterioration; the hidden mixed label is not being endorsed.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0011"
+    },
+    {
+      "case_id": "c1-0012",
+      "task_type": "T1",
+      "label": "vascular",
+      "comment": "Stepwise decline, executive impairment, mild cognitive deficits and extensive white-matter hyperintensities support a vascular-dominant differential (78%). The isolated hallucination warrants an alternative, but does not outweigh the vascular pattern; the negative AD markers support low AD probability.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0012"
+    },
+    {
+      "case_id": "c1-0013",
+      "task_type": "T2",
+      "label": "AD",
+      "comment": "At CDR-SB 18 the scale cannot increase, so +0.0 and decline=false are correct for the bench's measured-change definition. This ceiling effect must not be read as clinical stability in the severely impaired synthetic presentation.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0013"
+    },
+    {
+      "case_id": "c1-0017",
+      "task_type": "T2",
+      "label": "AD",
+      "comment": "Gradual memory decline at CDR 1 with MMSE 23/MoCA 21 and positive CSF amyloid/tau supports +2.5 points over two years with decline=true as a plausible trajectory. The missing baseline CDR-SB limits precision, but the visible stage leaves room for this amount of worsening.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0017"
+    },
+    {
+      "case_id": "c1-0020",
+      "task_type": "T1",
+      "label": "AD",
+      "comment": "Gradual amnestic dementia with CSF A\u03b242 655, amyloid PET 53.8 and tau PET 1.72 supports an AD-dominant distribution (86%). A hallucination alone does not establish DLB; retaining mixed pathology as an alternative is reasonable.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0020"
+    },
+    {
+      "case_id": "c1-0021",
+      "task_type": "T2",
+      "label": "AD",
+      "comment": "Moderate impairment at CDR 2/CDR-SB 14.5 with concordantly positive CSF amyloid/tau supports a +2.5-point trajectory that remains below the scale ceiling. The sparse symptom history limits etiologic detail but does not contradict decline=true over two years.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0021"
+    },
+    {
+      "case_id": "c1-0025",
+      "task_type": "T2",
+      "label": "FTLD-TDP",
+      "comment": "CDR-SB 0, MMSE 28 and MoCA 27 without a documented progressive course make a stable recorded two-year CDR-SB trajectory a defensible conservative target. Behavior/language change and posterior atrophy warrant uncertainty and follow-up; approval of +0.0/decline=false does not endorse the hidden FTLD-TDP label or guarantee stability.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0025"
+    },
+    {
+      "case_id": "c1-0026",
+      "task_type": "T3",
+      "label": "FTLD-TDP",
+      "comment": "Visible A\u03b242 1491 and amyloid PET 11.3 are negative, p-tau181 15.4 is negative, and t-tau 176 is below the N cutoff, matching A-/T-/N-. N-negative is the bench's t-tau call, not a denial of the posterior atrophy described on MRI.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0026"
+    },
+    {
+      "case_id": "c1-0027",
+      "task_type": "T5",
+      "label": "vascular",
+      "comment": "Stepwise cognitive decline with executive impairment and no structural imaging shown makes mri_brain a fair next test to assess a possible vascular contribution. This is supported by the visible note rather than merely by the hidden vascular label.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0027"
+    },
+    {
+      "case_id": "c1-0033",
+      "task_type": "T2",
+      "label": "FTLD-TDP",
+      "comment": "Gradual behavioral change with CDR 2/CDR-SB 11, impaired screens and asymmetric atrophy supports a plausible +2.5-point increase with decline=true. The trajectory does not require accepting the unconfirmed FTLD-TDP protein label.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0033"
+    },
+    {
+      "case_id": "c1-0036",
+      "task_type": "T1",
+      "label": "DLB",
+      "comment": "Dementia at CDR 1 with fluctuations and parkinsonism supports a DLB-dominant vector (82%), while the displayed plasma/tau PET results do not support AD. Motor-versus-cognitive onset timing is missing, so this remains a differential rather than a confirmed DLB diagnosis.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0036"
+    },
+    {
+      "case_id": "c1-0037",
+      "task_type": "T2",
+      "label": "FTLD-tau",
+      "comment": "With CDR 3/CDR-SB 16, severe test impairment and frontal atrophy, a +1-point two-year change is plausible and fits the limited remaining scale range. The stepwise course leaves etiology uncertain, but does not make this modest worsening or decline=true unfair.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0037"
+    },
+    {
+      "case_id": "c1-0038",
+      "task_type": "T3",
+      "label": "AD",
+      "comment": "Visible A\u03b242 606/amyloid PET 71.9, p-tau181 40.0 and t-tau 493 cross their respective bench thresholds, supporting A+/T+/N+.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0038"
+    },
+    {
+      "case_id": "c1-0040",
+      "task_type": "T1",
+      "label": "AD",
+      "comment": "Marked cognitive impairment and worsening memory with amyloid PET 73.6 and elevated p-tau181/plasma p-tau217 support AD as the mode. The substantial mixed probability is reasonable uncertainty at age 95; the chart does not confirm a specific second pathology.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0040"
+    },
+    {
+      "case_id": "c1-0041",
+      "task_type": "T2",
+      "label": "FTLD-TDP",
+      "comment": "Gradual multidomain decline with CDR 2/MoCA 10 and posterior atrophy makes +3 points and decline=true a plausible two-year trajectory. The missing baseline CDR-SB limits precision, and the hidden FTLD-TDP assignment is not needed or endorsed for this T2 judgment.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0041"
+    },
+    {
+      "case_id": "c1-0042",
+      "task_type": "T3",
+      "label": "vascular",
+      "comment": "CSF A\u03b242 1514, p-tau181 10.4 and t-tau 150 support A-/T-/N- using the stated thresholds. Frontal atrophy and severe impairment do not change the generator's operational t-tau N call; they do preclude interpreting N-negative as absence of brain disease.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0042"
+    },
+    {
+      "case_id": "c1-0045",
+      "task_type": "T2",
+      "label": "DLB",
+      "comment": "At CDR-SB 17.5 only a 0.5-point increase is possible, so +0.5 and decline=false match the scale ceiling and the generator's at-least-1-point decline threshold. This does not mean no clinical deterioration in the severe fluctuating/parkinsonian presentation.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0045"
+    },
+    {
+      "case_id": "c1-0046",
+      "task_type": "T3",
+      "label": "FTLD-TDP",
+      "comment": "Visible A\u03b242 1443, p-tau181 14.8/tau PET 1.06 and t-tau 144 support A-/T-/N- under the bench cutoffs. Severe impairment does not itself reverse any of these measurement-based calls.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0046"
+    },
+    {
+      "case_id": "c1-0047",
+      "task_type": "T5",
+      "label": "DLB",
+      "comment": "Fluctuations and parkinsonism with active sleep support considering Lewy-body disease, while extensive white-matter disease leaves an etiologic alternative that DAT imaging could help assess. No DAT result is already shown, so datscan is a defensible next test within the closed list, although utility at this severe stage would depend on an unstated decision.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0047"
+    },
+    {
+      "case_id": "c1-0049",
+      "task_type": "T2",
+      "label": "AD",
+      "comment": "CDR-SB 17.5 limits worsening to 0.5 points, so +0.5/decline=false is consistent with the bench definition despite severe impairment and positive AD markers. The boolean must not be interpreted as clinical stability.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0049"
+    },
+    {
+      "case_id": "c1-0052",
+      "task_type": "T3",
+      "label": "mixed",
+      "comment": "Visible A\u03b242 1494/amyloid PET 1.5 and p-tau181 15.4/tau PET 1.08 are negative, while t-tau 449 exceeds 235, matching A-/T-/N+. The mild or normal screening scores do not negate the measurement-based N call.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0052"
+    },
+    {
+      "case_id": "c1-0053",
+      "task_type": "T2",
+      "label": "FTLD-tau",
+      "comment": "Normal MMSE/MoCA 29 and CDR-SB 0 make a small +0.5-point change below the bench decline threshold a plausible conservative two-year trajectory. Reported cognitive symptoms and asymmetric atrophy warrant uncertainty; the forecast is not proof of stability or of the hidden FTLD-tau label.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0053"
+    },
+    {
+      "case_id": "c1-0056",
+      "task_type": "T1",
+      "label": "AD",
+      "comment": "Progressive amnestic dementia with CSF A\u03b242 688 and p-tau181 41.4 supports the AD mode, while parkinsonism and frontal atrophy justify keeping mixed pathology in the differential. The high mixed probability is uncertain and does not identify a second pathology, but the broad AD-versus-mixed allocation is defensible as a differential rather than a precise calibrated estimate.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0056"
+    },
+    {
+      "case_id": "c1-0057",
+      "task_type": "T2",
+      "label": "AD",
+      "comment": "Gradual memory decline, CDR 2/CDR-SB 14 and positive amyloid markers make +1.5 points over two years with decline=true a plausible modest trajectory. The projected score remains within the scale and the note does not support a uniquely precise rate.",
+      "flagged_criteria": [],
+      "task_path": "tasks/c1-0057"
+    }
+  ]
+}

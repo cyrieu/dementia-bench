@@ -1,0 +1,12 @@
+{
+  "probabilities": {
+    "AD": 0.00021852,
+    "DLB": 0.83913219,
+    "FTLD-tau": 0.00258131,
+    "FTLD-TDP": 0.00010243,
+    "vascular": 0.15733728,
+    "LATE": 0.00019121,
+    "mixed": 0.00043706
+  },
+  "reasoning": "Oracle response for this synthetic item. The values are the hidden task key, not a clinical judgment."
+}

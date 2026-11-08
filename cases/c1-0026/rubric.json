@@ -1,0 +1,59 @@
+{
+  "case_id": "c1-0026",
+  "task": "T3",
+  "task_type": "T3",
+  "theme": "atn",
+  "canary": "dementia-bench-canary: 4f0c9a27-6e1b-4d83-9a55-d2b7e0c81f64",
+  "draft": true,
+  "criteria": [
+    {
+      "id": "ad.syndrome_is_not_biology",
+      "text": "Keep the syndrome and the biomarker result as separate claims.",
+      "points": 5,
+      "citation": "ad.syndrome_is_not_biology",
+      "axis": "accuracy"
+    },
+    {
+      "id": "rubric.penalty.invented_late_biomarker",
+      "text": "Apply −8 when the answer cites a LATE PET or biofluid cutoff.",
+      "points": -8,
+      "citation": "rubric.penalty.invented_late_biomarker",
+      "axis": "accuracy"
+    },
+    {
+      "id": "rubric.penalty.core2_as_diagnosis",
+      "text": "Apply −5 when tau PET or a Core 2 fluid marker is used as the sole diagnosis.",
+      "points": -5,
+      "citation": "rubric.penalty.core2_as_diagnosis",
+      "axis": "accuracy"
+    },
+    {
+      "id": "ad.n_i_v_s_not_core",
+      "text": "Do not diagnose or biologically stage AD from atrophy, FDG, NfL, or white-matter disease alone.",
+      "points": 5,
+      "citation": "ad.n_i_v_s_not_core",
+      "axis": "accuracy"
+    },
+    {
+      "id": "late.no_specific_biomarker",
+      "text": "Do not cite a LATE PET or blood cutoff. Say no specific test was available in this consensus.",
+      "points": 5,
+      "citation": "late.no_specific_biomarker",
+      "axis": "accuracy"
+    }
+  ],
+  "core_ids": [
+    "ad.syndrome_is_not_biology",
+    "rubric.penalty.invented_late_biomarker",
+    "rubric.penalty.core2_as_diagnosis",
+    "ad.n_i_v_s_not_core"
+  ],
+  "specific_ids": [
+    "late.no_specific_biomarker"
+  ],
+  "floor_ids": [],
+  "rules_tasks": [
+    "T2"
+  ],
+  "gaps": []
+}

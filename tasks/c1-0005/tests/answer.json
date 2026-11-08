@@ -1,0 +1,282 @@
+{
+  "case_id": "c1-0005",
+  "seed": 1,
+  "hidden_label": "DLB",
+  "task": "T2",
+  "label_weight": 0.7,
+  "label_probs": {
+    "AD": 0.10871822,
+    "DLB": 0.65230932,
+    "FTLD-tau": 0.00056624,
+    "FTLD-TDP": 0.01358978,
+    "vascular": 0.00254808,
+    "LATE": 0.02899153,
+    "mixed": 0.19327683
+  },
+  "features": {
+    "symptoms": {
+      "kind": "bernoulli_group",
+      "items": {
+        "memory_difficulty": {
+          "present": true,
+          "revealed": true
+        },
+        "fluctuating_attention": {
+          "present": false,
+          "revealed": true
+        },
+        "visual_hallucinations": {
+          "present": false,
+          "revealed": false
+        },
+        "parkinsonism": {
+          "present": true,
+          "revealed": true
+        },
+        "rem_sleep_enactment": {
+          "present": true,
+          "revealed": true
+        },
+        "behavior_or_personality_change": {
+          "present": false,
+          "revealed": false
+        },
+        "language_difficulty": {
+          "present": false,
+          "revealed": true
+        },
+        "stepwise_course": {
+          "present": false,
+          "revealed": true
+        },
+        "executive_difficulty": {
+          "present": false,
+          "revealed": true
+        },
+        "headache": {
+          "present": true,
+          "revealed": true
+        },
+        "daytime_sleepiness": {
+          "present": true,
+          "revealed": true
+        }
+      }
+    },
+    "apoe": {
+      "kind": "categorical",
+      "level": "not_tested",
+      "revealed": true
+    },
+    "mri_atrophy": {
+      "kind": "categorical",
+      "level": "frontal",
+      "revealed": true
+    },
+    "age_band": {
+      "kind": "categorical",
+      "level": "lt_65",
+      "revealed": true,
+      "value": 53
+    },
+    "sex": {
+      "kind": "categorical",
+      "level": "male",
+      "revealed": true
+    },
+    "mmse": {
+      "kind": "categorical",
+      "level": "18_23",
+      "revealed": true,
+      "value": 22
+    },
+    "moca": {
+      "kind": "categorical",
+      "level": "18_23",
+      "revealed": true,
+      "value": 19
+    },
+    "cdr_global": {
+      "kind": "categorical",
+      "level": "1",
+      "revealed": true,
+      "value": 1
+    },
+    "cdr_sb": {
+      "kind": "categorical",
+      "level": "4.5_9",
+      "revealed": true,
+      "value": 7.5
+    },
+    "csf_amyloid": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": false
+    },
+    "pet_amyloid": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": false
+    },
+    "plasma_amyloid": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": false
+    },
+    "csf_tau": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": true
+    },
+    "pet_tau": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": false
+    },
+    "plasma_tau": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": true
+    },
+    "biomarkers": {
+      "kind": "continuous_biomarkers",
+      "values": {
+        "csf_abeta42": {
+          "value": 1552.0,
+          "revealed": false,
+          "unit": "pg/mL"
+        },
+        "csf_ptau181": {
+          "value": 15.5,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "csf_ttau": {
+          "value": 146.0,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "amyloid_pet_centiloid": {
+          "value": 8.4,
+          "revealed": false,
+          "unit": "Centiloids"
+        },
+        "tau_pet_suvr": {
+          "value": 1.05,
+          "revealed": false,
+          "unit": "SUVR"
+        },
+        "plasma_ptau217": {
+          "value": 0.29,
+          "revealed": true,
+          "unit": "pg/mL"
+        }
+      },
+      "calls": {
+        "A": "negative",
+        "T": "negative",
+        "N": "negative"
+      },
+      "moments_source": "synthetic_fallback",
+      "latent_stage": "1",
+      "latent_severity": 0.45
+    }
+  },
+  "vignette_path": "vignette.md",
+  "case_index": 5,
+  "case_seed": 14556610051648785480,
+  "primary_neuropathology": "DLB",
+  "contributing_neuropathology": [],
+  "generative_probabilities": {
+    "AD": 0.10871822,
+    "DLB": 0.65230932,
+    "FTLD-tau": 0.00056624,
+    "FTLD-TDP": 0.01358978,
+    "vascular": 0.00254808,
+    "LATE": 0.02899153,
+    "mixed": 0.19327683
+  },
+  "sampling_prior": {
+    "AD": 0.3,
+    "DLB": 0.1,
+    "FTLD-tau": 0.1,
+    "FTLD-TDP": 0.1,
+    "vascular": 0.1,
+    "LATE": 0.1,
+    "mixed": 0.2
+  },
+  "withheld_features": [
+    "symptoms.visual_hallucinations",
+    "symptoms.behavior_or_personality_change",
+    "csf_amyloid",
+    "pet_amyloid",
+    "plasma_amyloid",
+    "pet_tau"
+  ],
+  "synthetic": true,
+  "canary": "DEMENTIA-BENCH-CANARY-8c1e0a44-6d2f-4b7a-9f15-c0ffee000001",
+  "gold": {
+    "T1": {
+      "label_probs": {
+        "AD": 0.10871822,
+        "DLB": 0.65230932,
+        "FTLD-tau": 0.00056624,
+        "FTLD-TDP": 0.01358978,
+        "vascular": 0.00254808,
+        "LATE": 0.02899153,
+        "mixed": 0.19327683
+      }
+    },
+    "T2": {
+      "cdr_sb_change_2y": 4.5,
+      "decline": true
+    },
+    "T3": {
+      "A": "negative",
+      "T": "negative",
+      "N": "negative"
+    },
+    "T4": {
+      "copathologies": []
+    },
+    "T5": {
+      "next_test": "datscan"
+    }
+  },
+  "model": {
+    "form": "naive_bayes",
+    "generative_probabilities_condition_on": "features_shown_in_the_vignette",
+    "rules_loaded": true,
+    "rules_forced_reveal": false,
+    "knowledge_constraints_checked": true,
+    "claimed_level": "unspecified",
+    "apply_drug": "none",
+    "latent_severity": 0.45,
+    "latent_severity_stage": "1",
+    "label_mode_repairs": 0,
+    "biomarker_moments_source": "synthetic_fallback"
+  },
+  "rule_features": {
+    "apply_drug": "none",
+    "claimed_level": "unspecified",
+    "autopsy_labels": [
+      "DLB"
+    ],
+    "late_specific_biomarker_claimed": false,
+    "dementia": true,
+    "dlb_core": [
+      "rbd",
+      "parkinsonism"
+    ],
+    "dlb_indicative": [],
+    "parkinsonism_onset": "with_or_after_dementia"
+  },
+  "rule_overrides": [],
+  "rules_checked": [
+    "dlb.essential.dementia",
+    "dlb.at_least_possible",
+    "dlb.versus_pdd"
+  ],
+  "params_file": "example.synthetic.json",
+  "task_type": "T2"
+}

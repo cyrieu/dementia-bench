@@ -1,0 +1,284 @@
+{
+  "case_id": "c1-0025",
+  "seed": 1,
+  "hidden_label": "FTLD-TDP",
+  "task": "T2",
+  "label_weight": 0.7,
+  "label_probs": {
+    "AD": 0.01475108,
+    "DLB": 0.00075121,
+    "FTLD-tau": 0.20979308,
+    "FTLD-TDP": 0.62937923,
+    "vascular": 0.10817455,
+    "LATE": 0.01748276,
+    "mixed": 0.01966809
+  },
+  "features": {
+    "symptoms": {
+      "kind": "bernoulli_group",
+      "items": {
+        "memory_difficulty": {
+          "present": false,
+          "revealed": true
+        },
+        "fluctuating_attention": {
+          "present": false,
+          "revealed": true
+        },
+        "visual_hallucinations": {
+          "present": false,
+          "revealed": true
+        },
+        "parkinsonism": {
+          "present": false,
+          "revealed": true
+        },
+        "rem_sleep_enactment": {
+          "present": false,
+          "revealed": true
+        },
+        "behavior_or_personality_change": {
+          "present": true,
+          "revealed": true
+        },
+        "language_difficulty": {
+          "present": true,
+          "revealed": true
+        },
+        "stepwise_course": {
+          "present": false,
+          "revealed": false
+        },
+        "executive_difficulty": {
+          "present": false,
+          "revealed": true
+        },
+        "headache": {
+          "present": true,
+          "revealed": true
+        },
+        "daytime_sleepiness": {
+          "present": true,
+          "revealed": true
+        }
+      }
+    },
+    "apoe": {
+      "kind": "categorical",
+      "level": "e2_carrier",
+      "revealed": false
+    },
+    "mri_atrophy": {
+      "kind": "categorical",
+      "level": "posterior",
+      "revealed": true
+    },
+    "age_band": {
+      "kind": "categorical",
+      "level": "ge_85",
+      "revealed": true,
+      "value": 87
+    },
+    "sex": {
+      "kind": "categorical",
+      "level": "male",
+      "revealed": true
+    },
+    "mmse": {
+      "kind": "categorical",
+      "level": "24_30",
+      "revealed": true,
+      "value": 28
+    },
+    "moca": {
+      "kind": "categorical",
+      "level": "24_30",
+      "revealed": true,
+      "value": 27
+    },
+    "cdr_global": {
+      "kind": "categorical",
+      "level": "0",
+      "revealed": false,
+      "value": 0
+    },
+    "cdr_sb": {
+      "kind": "categorical",
+      "level": "0",
+      "revealed": true,
+      "value": 0.0
+    },
+    "csf_amyloid": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": true
+    },
+    "pet_amyloid": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": true
+    },
+    "plasma_amyloid": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": false
+    },
+    "csf_tau": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": true
+    },
+    "pet_tau": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": false
+    },
+    "plasma_tau": {
+      "kind": "categorical",
+      "level": "negative",
+      "revealed": true
+    },
+    "biomarkers": {
+      "kind": "continuous_biomarkers",
+      "values": {
+        "csf_abeta42": {
+          "value": 1455.0,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "csf_ptau181": {
+          "value": 14.7,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "csf_ttau": {
+          "value": 175.0,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "amyloid_pet_centiloid": {
+          "value": -3.5,
+          "revealed": true,
+          "unit": "Centiloids"
+        },
+        "tau_pet_suvr": {
+          "value": 1.1,
+          "revealed": false,
+          "unit": "SUVR"
+        },
+        "plasma_ptau217": {
+          "value": 0.2,
+          "revealed": true,
+          "unit": "pg/mL"
+        }
+      },
+      "calls": {
+        "A": "negative",
+        "T": "negative",
+        "N": "negative"
+      },
+      "moments_source": "synthetic_fallback",
+      "latent_stage": "0",
+      "latent_severity": 0.06
+    }
+  },
+  "vignette_path": "cases/c1-0025/vignette.md",
+  "case_index": 25,
+  "case_seed": 17099323535627171238,
+  "primary_neuropathology": "FTLD-TDP",
+  "contributing_neuropathology": [],
+  "generative_probabilities": {
+    "AD": 0.01475108,
+    "DLB": 0.00075121,
+    "FTLD-tau": 0.20979308,
+    "FTLD-TDP": 0.62937923,
+    "vascular": 0.10817455,
+    "LATE": 0.01748276,
+    "mixed": 0.01966809
+  },
+  "sampling_prior": {
+    "AD": 0.3,
+    "DLB": 0.1,
+    "FTLD-tau": 0.1,
+    "FTLD-TDP": 0.1,
+    "vascular": 0.1,
+    "LATE": 0.1,
+    "mixed": 0.2
+  },
+  "withheld_features": [
+    "symptoms.stepwise_course",
+    "apoe",
+    "cdr_global",
+    "plasma_amyloid",
+    "pet_tau"
+  ],
+  "synthetic": true,
+  "canary": "DEMENTIA-BENCH-CANARY-8c1e0a44-6d2f-4b7a-9f15-c0ffee000001",
+  "gold": {
+    "T1": {
+      "label_probs": {
+        "AD": 0.01475108,
+        "DLB": 0.00075121,
+        "FTLD-tau": 0.20979308,
+        "FTLD-TDP": 0.62937923,
+        "vascular": 0.10817455,
+        "LATE": 0.01748276,
+        "mixed": 0.01966809
+      }
+    },
+    "T2": {
+      "cdr_sb_change_2y": 0.0,
+      "decline": false
+    },
+    "T3": {
+      "A": "negative",
+      "T": "negative",
+      "N": "negative"
+    },
+    "T4": {
+      "copathologies": []
+    },
+    "T5": {
+      "next_test": "neuropsychological_testing"
+    }
+  },
+  "model": {
+    "form": "naive_bayes",
+    "generative_probabilities_condition_on": "features_shown_in_the_vignette",
+    "rules_loaded": true,
+    "rules_forced_reveal": false,
+    "knowledge_constraints_checked": true,
+    "claimed_level": "unspecified",
+    "apply_drug": "none",
+    "latent_severity": 0.06,
+    "latent_severity_stage": "0",
+    "label_mode_repairs": 5,
+    "biomarker_moments_source": "synthetic_fallback"
+  },
+  "rule_features": {
+    "apply_drug": "none",
+    "claimed_level": "unspecified",
+    "autopsy_labels": [
+      "FTLD-TDP"
+    ],
+    "late_specific_biomarker_claimed": false,
+    "progressive_deterioration": true,
+    "bvftd_features": [
+      "disinhibition",
+      "apathy_inertia",
+      "loss_empathy"
+    ],
+    "exclusion_nondegenerative": false,
+    "exclusion_psychiatric": false,
+    "histopathology": "ftld_tdp"
+  },
+  "rule_overrides": [],
+  "rules_checked": [
+    "ftld.progressive_required",
+    "ftld.possible.three_of_six",
+    "ftld.exclusion.medical_and_psychiatric",
+    "ftld.tdp.glossary"
+  ],
+  "params_file": "example.synthetic.json",
+  "task_type": "T2"
+}

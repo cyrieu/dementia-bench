@@ -1,0 +1,309 @@
+{
+  "case_id": "c1-0021",
+  "seed": 1,
+  "hidden_label": "AD",
+  "task": "T2",
+  "label_weight": 0.7,
+  "label_probs": {
+    "AD": 0.72514399,
+    "DLB": 0.0014163,
+    "FTLD-tau": 0.00453215,
+    "FTLD-TDP": 0.090643,
+    "vascular": 0.0453215,
+    "LATE": 0.01208573,
+    "mixed": 0.12085733
+  },
+  "features": {
+    "symptoms": {
+      "kind": "bernoulli_group",
+      "items": {
+        "memory_difficulty": {
+          "present": false,
+          "revealed": true
+        },
+        "fluctuating_attention": {
+          "present": true,
+          "revealed": false
+        },
+        "visual_hallucinations": {
+          "present": false,
+          "revealed": true
+        },
+        "parkinsonism": {
+          "present": false,
+          "revealed": false
+        },
+        "rem_sleep_enactment": {
+          "present": false,
+          "revealed": true
+        },
+        "behavior_or_personality_change": {
+          "present": false,
+          "revealed": true
+        },
+        "language_difficulty": {
+          "present": false,
+          "revealed": false
+        },
+        "stepwise_course": {
+          "present": false,
+          "revealed": true
+        },
+        "executive_difficulty": {
+          "present": false,
+          "revealed": true
+        },
+        "headache": {
+          "present": false,
+          "revealed": true
+        },
+        "daytime_sleepiness": {
+          "present": true,
+          "revealed": true
+        }
+      }
+    },
+    "apoe": {
+      "kind": "categorical",
+      "level": "not_tested",
+      "revealed": false
+    },
+    "mri_atrophy": {
+      "kind": "categorical",
+      "level": "frontal",
+      "revealed": true
+    },
+    "age_band": {
+      "kind": "categorical",
+      "level": "75_84",
+      "revealed": true,
+      "value": 79
+    },
+    "sex": {
+      "kind": "categorical",
+      "level": "male",
+      "revealed": true
+    },
+    "mmse": {
+      "kind": "categorical",
+      "level": "0_17",
+      "revealed": true,
+      "value": 15
+    },
+    "moca": {
+      "kind": "categorical",
+      "level": "0_17",
+      "revealed": false,
+      "value": 15
+    },
+    "cdr_global": {
+      "kind": "categorical",
+      "level": "2",
+      "revealed": true,
+      "value": 2
+    },
+    "cdr_sb": {
+      "kind": "categorical",
+      "level": "9.5_18",
+      "revealed": true,
+      "value": 14.5
+    },
+    "csf_amyloid": {
+      "kind": "categorical",
+      "level": "positive",
+      "revealed": true
+    },
+    "pet_amyloid": {
+      "kind": "categorical",
+      "level": "positive",
+      "revealed": false
+    },
+    "plasma_amyloid": {
+      "kind": "categorical",
+      "level": "positive",
+      "revealed": false
+    },
+    "csf_tau": {
+      "kind": "categorical",
+      "level": "positive",
+      "revealed": true
+    },
+    "pet_tau": {
+      "kind": "categorical",
+      "level": "positive",
+      "revealed": false
+    },
+    "plasma_tau": {
+      "kind": "categorical",
+      "level": "positive",
+      "revealed": true
+    },
+    "biomarkers": {
+      "kind": "continuous_biomarkers",
+      "values": {
+        "csf_abeta42": {
+          "value": 719.0,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "csf_ptau181": {
+          "value": 45.3,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "csf_ttau": {
+          "value": 418.0,
+          "revealed": true,
+          "unit": "pg/mL"
+        },
+        "amyloid_pet_centiloid": {
+          "value": 77.9,
+          "revealed": false,
+          "unit": "Centiloids"
+        },
+        "tau_pet_suvr": {
+          "value": 1.79,
+          "revealed": false,
+          "unit": "SUVR"
+        },
+        "plasma_ptau217": {
+          "value": 0.92,
+          "revealed": true,
+          "unit": "pg/mL"
+        }
+      },
+      "calls": {
+        "A": "positive",
+        "T": "positive",
+        "N": "positive"
+      },
+      "moments_source": "synthetic_fallback",
+      "latent_stage": "2",
+      "latent_severity": 0.67
+    }
+  },
+  "vignette_path": "vignette.md",
+  "case_index": 21,
+  "case_seed": 5466948358311357359,
+  "primary_neuropathology": "AD",
+  "contributing_neuropathology": [],
+  "generative_probabilities": {
+    "AD": 0.72514399,
+    "DLB": 0.0014163,
+    "FTLD-tau": 0.00453215,
+    "FTLD-TDP": 0.090643,
+    "vascular": 0.0453215,
+    "LATE": 0.01208573,
+    "mixed": 0.12085733
+  },
+  "sampling_prior": {
+    "AD": 0.3,
+    "DLB": 0.1,
+    "FTLD-tau": 0.1,
+    "FTLD-TDP": 0.1,
+    "vascular": 0.1,
+    "LATE": 0.1,
+    "mixed": 0.2
+  },
+  "withheld_features": [
+    "symptoms.fluctuating_attention",
+    "symptoms.parkinsonism",
+    "symptoms.language_difficulty",
+    "apoe",
+    "moca",
+    "pet_amyloid",
+    "plasma_amyloid",
+    "pet_tau"
+  ],
+  "synthetic": true,
+  "canary": "DEMENTIA-BENCH-CANARY-8c1e0a44-6d2f-4b7a-9f15-c0ffee000001",
+  "gold": {
+    "T1": {
+      "label_probs": {
+        "AD": 0.72514399,
+        "DLB": 0.0014163,
+        "FTLD-tau": 0.00453215,
+        "FTLD-TDP": 0.090643,
+        "vascular": 0.0453215,
+        "LATE": 0.01208573,
+        "mixed": 0.12085733
+      }
+    },
+    "T2": {
+      "cdr_sb_change_2y": 2.5,
+      "decline": true
+    },
+    "T3": {
+      "A": "positive",
+      "T": "positive",
+      "N": "positive"
+    },
+    "T4": {
+      "copathologies": []
+    },
+    "T5": {
+      "next_test": "amyloid_pet"
+    }
+  },
+  "model": {
+    "form": "naive_bayes",
+    "generative_probabilities_condition_on": "features_shown_in_the_vignette",
+    "rules_loaded": true,
+    "rules_forced_reveal": false,
+    "knowledge_constraints_checked": true,
+    "claimed_level": "unspecified",
+    "apply_drug": "none",
+    "latent_severity": 0.67,
+    "latent_severity_stage": "2",
+    "label_mode_repairs": 0,
+    "biomarker_moments_source": "synthetic_fallback"
+  },
+  "rule_features": {
+    "apply_drug": "none",
+    "claimed_level": "unspecified",
+    "autopsy_labels": [
+      "AD"
+    ],
+    "late_specific_biomarker_claimed": false,
+    "core1_abnormal": true,
+    "genetically_determined_ad": false,
+    "amyloid_method": "csf_ratio",
+    "plasma_assay_accurate": false,
+    "amyloid_confirmed": true,
+    "core2_abnormal": true,
+    "amyloid_pet": "medial_or_positive",
+    "tau_pet": "moderate_neocortical"
+  },
+  "rule_overrides": [],
+  "rules_checked": [
+    "ad.definition.core1",
+    "ad.plasma.accuracy_bar",
+    "ad.core2.not_standalone",
+    "ad.a_negative_t2_positive_not_ad",
+    "ad.clinical_stage_requires_continuum",
+    "lecanemab.syndrome",
+    "lecanemab.mmse_or_screen",
+    "lecanemab.amyloid",
+    "lecanemab.no_other_cause",
+    "lecanemab.mri_bleeds",
+    "lecanemab.mri_vascular",
+    "lecanemab.recent_stroke_any_seizure",
+    "lecanemab.anticoagulant",
+    "lecanemab.not_on_aducanumab",
+    "lecanemab.mri_feasible_and_recent",
+    "lecanemab.immunotherapy_exclusion",
+    "donanemab.stage",
+    "donanemab.screens",
+    "donanemab.amyloid_not_tau",
+    "donanemab.no_other_cause",
+    "donanemab.mri_heme",
+    "donanemab.mri_vascular",
+    "donanemab.stroke_seizure",
+    "donanemab.anticoagulant",
+    "donanemab.not_on_other_mab",
+    "donanemab.mri_window",
+    "donanemab.immunotherapy"
+  ],
+  "params_file": "example.synthetic.json",
+  "task_type": "T2"
+}
